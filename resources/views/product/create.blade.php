@@ -25,27 +25,28 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{-- TADI SALAH DISINI MAS ADIT, DI VALIDASI KAN CUMA TERIMA (K) & (B) tapi disini valuenya tadi malah (Besar) & (Kecil) --}}
                         <label for="jenis_produk">Jenis Produk</label>
                         <select name="jenis_produk" id="jenis_produk" class="form-control" >
-                            <option value="Besar" {{ old('jenis_produk') == 'Besar' ? 'selected' : '' }}>
+                            <option value="B" {{ old('jenis_produk') == 'B' ? 'selected' : '' }}>
                                 Diameter Besar
                             </option>
-                            <option value="Kecil" {{ old('jenis_produk') == 'Kecil' ? 'selected' : '' }}>
+                            <option value="K" {{ old('jenis_produk') == 'K' ? 'selected' : '' }}>
                                 Diameter Kecil
                             </option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="keluar_produk">Keluar Produk</label>
-                        <input type="datetime-local" class="form-control @error('keluar_produk') is-invalid @enderror" id="keluar_produk" name="keluar_produk" value="{{ old('keluar_produk') }}">
-                        @error('keluar_produk')
+                        <label for="masuk_produk">Masuk Produk</label>
+                        <input type="datetime-local" class="form-control @error('masuk_produk') is-invalid @enderror" id="masuk_produk" name="masuk_produk" value="{{ old('masuk_produk') }}">
+                        @error('masuk_produk')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="masuk_produk">Masuk Produk</label>
-                        <input type="datetime-local" class="form-control @error('masuk_produk') is-invalid @enderror" id="masuk_produk" name="masuk_produk" value="{{ old('masuk_produk') }}">
-                        @error('masuk_produk')
+                        <label for="keluar_produk">Keluar Produk</label>
+                        <input type="datetime-local" class="form-control @error('keluar_produk') is-invalid @enderror" id="keluar_produk" name="keluar_produk" value="{{ old('keluar_produk') }}">
+                        @error('keluar_produk')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -65,9 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label for="alamat_pengelola">Alamat</label>
-                        <textarea class="form-control" name="alamat_pengelola" id="alamat_pengelola" rows="3">
-                            {{ old('alamat_pengelola') }}
-                        </textarea>
+                        <textarea class="form-control" name="alamat_pengelola" id="alamat_pengelola" rows="3">{{ old('alamat_pengelola') }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Simpan</button>
                 </form>

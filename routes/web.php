@@ -18,11 +18,14 @@ Route::get('/', function () {
 });
 
 // Route::group(['prefix'=>'products'], function() {
-    Route::get('/products','ProductController@index')->name('products.index');
-    Route::get('/products/create','ProductController@create')->name('products.create');
-    Route::post('/products','ProductController@store')->name('products.store');
-    Route::get('/products/{product}','ProductController@show')->name('products.show');
-    Route::get('/products/{product}/edit','ProductController@edit')->name('products.edit');
-    Route::patch('/products/{product}','ProductController@update')->name('products.update');
-    Route::delete('/products/{product}','ProductController@destroy')->name('products.destroy');
+    // Route::get('/products','ProductController@index')->name('products.index');
+    // Route::get('/products/create','ProductController@create')->name('products.create');
+    // Route::post('/products','ProductController@store')->name('products.store');
+    // Route::get('/products/{product}','ProductController@show')->name('products.show');
+    // Route::get('/products/{product}/edit','ProductController@edit')->name('products.edit');
+    // Route::patch('/products/{product}','ProductController@update')->name('products.update');
+    // Route::delete('/products/{product}','ProductController@destroy')->name('products.destroy');
 // });
+
+// ini saya pake route resource mas, kalo gamau pake ini komentarin aja yang diatas unkomentar
+Route::resource('products', 'ProductController');

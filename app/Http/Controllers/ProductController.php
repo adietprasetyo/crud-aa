@@ -14,10 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
         $products = Product::all();
         return view('product.index', compact('products'));
-
     }
 
     /**
@@ -27,7 +25,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
         return view('product.create');
     }
 
@@ -58,7 +55,10 @@ class ProductController extends Controller
         $product->nik_pengelola = $validatedData['nik_pengelola'];
         $product->alamat_pengelola = $validatedData['alamat_pengelola'];
         $product->save();
-        return "Data berhasil disimpan";
+        return redirect()->route('products.index')->with([
+            'status' => 'simpan',
+            'message' => $validatedData['nama_produk']
+        ]);
         // dump($validatedData);
     }
 
@@ -70,9 +70,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
-        $result = Product::find($product);
-        return view('product.show', compact('result'));
+        return view('product.show', compact('product'));
     }
 
     /**
@@ -83,9 +81,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
-        $result = Product::find($product);
-        return view('product.edit', compact('result'));
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -97,7 +93,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
         $validatedData = $request->validate([
             'nama_produk'=>'required|min:3|max:100',
             'jenis_produk'=>'required|in:K,B',
@@ -107,16 +102,11 @@ class ProductController extends Controller
             'nik_pengelola' => 'required|size:8',
             'alamat_pengelola'=>''
         ]);
-        $product = new Product();
-        $product->nama_produk = $validatedData['nama_produk'];
-        $product->jenis_produk = $validatedData['jenis_produk'];
-        $product->keluar_produk = $validatedData['keluar_produk'];
-        $product->masuk_produk = $validatedData['masuk_produk'];
-        $product->nama_kelola_produk = $validatedData['nama_kelola_produk'];
-        $product->nik_pengelola = $validatedData['nik_pengelola'];
-        $product->alamat_pengelola = $validatedData['alamat_pengelola'];
-        $product->save();
-        return redirect()->route('product.index');
+        $product->update($validatedData);
+        return redirect()->route('products.index')->with([
+            'status' => 'perbarui',
+            'message' => $validatedData['nama_produk']
+        ]);
     }
 
     /**
@@ -127,8 +117,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
         $product->delete();
-        return redirect()->route('product.index')->with('pesan', "Hapus data $product->nama_produk Berhasil");
+        return redirect()->route('products.index')->with([
+            'status' => 'delete',
+            'message' => $product->nama_produk
+        ]);
     }
 }

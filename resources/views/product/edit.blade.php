@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <h1 class="text-center">Data Edit Produksi</h1>
                 <hr>
-                <form action="{{ route('products.update', ['produk' => $product->id_produk]) }}" method="POST">
+                <form action="{{ route('products.update', $product->id_produk) }}" method="POST">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
@@ -27,10 +27,10 @@
                     <div class="form-group">
                         <label for="jenis_produk">Jenis Produk</label>
                         <select name="jenis_produk" id="jenis_produk" class="form-control" >
-                            <option value="Besar" {{ (old('jenis_produk') ?? $product->jenis_produk ) == 'Besar' ? 'selected' : '' }}>
+                            <option value="B" {{ (old('jenis_produk') ?? $product->jenis_produk ) == 'B' ? 'selected' : '' }}>
                                 Diameter Besar
                             </option>
-                            <option value="Kecil" {{ (old('jenis_produk') ?? $product->jenis_produk)  == 'Kecil' ? 'selected' : '' }}>
+                            <option value="K" {{ (old('jenis_produk') ?? $product->jenis_produk)  == 'K' ? 'selected' : '' }}>
                                 Diameter Kecil
                             </option>
                         </select>
@@ -65,9 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label for="alamat_pengelola">Alamat</label>
-                        <textarea class="form-control" name="alamat_pengelola" id="alamat_pengelola" rows="3">
-                            {{ old('alamat_pengelola') ?? $product->alamat_pengelola }}
-                        </textarea>
+                        <textarea class="form-control" name="alamat_pengelola" id="alamat_pengelola" rows="3">{{ old('alamat_pengelola') ?? $product->alamat_pengelola }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Simpan</button>
                 </form>
