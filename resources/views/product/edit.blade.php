@@ -36,16 +36,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="keluar_produk">Keluar Produk</label>
-                        <input type="text" class="form-control @error('keluar_produk') is-invalid @enderror" id="keluar_produk" name="keluar_produk" value="{{ old('keluar_produk') ?? $product->keluar_produk }}">
-                        @error('keluar_produk')
+                        <label for="masuk_produk">Masuk Produk</label>
+                        <input type="datetime-local" class="form-control @error('masuk_produk') is-invalid @enderror" id="masuk_produk" name="masuk_produk" value="{{ old('masuk_produk') ?? $tgl_masuk }}">
+                        @error('masuk_produk')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="masuk_produk">Masuk Produk</label>
-                        <input type="text" class="form-control @error('masuk_produk') is-invalid @enderror" id="masuk_produk" name="masuk_produk" value="{{ old('masuk_produk') ?? $product->masuk_produk }}">
-                        @error('masuk_produk')
+                        <label for="keluar_produk">Keluar Produk</label>
+                        <input type="datetime-local" class="form-control @error('keluar_produk') is-invalid @enderror" id="keluar_produk" name="keluar_produk" value="{{ old('keluar_produk') ?? $tgl_keluar }}">
+                        @error('keluar_produk')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>

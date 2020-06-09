@@ -81,7 +81,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product.edit', compact('product'));
+        $dateMsk = strtotime($product->masuk_produk);
+        $tgl_masuk = date('Y-m-d\TH:i', $dateMsk);
+        $dateKeluar = strtotime($product->keluar_produk);
+        $tgl_keluar = date('Y-m-d\TH:i', $dateKeluar);
+    
+        
+        return view('product.edit', compact('product', 'tgl_keluar', 'tgl_masuk'));
     }
 
     /**
